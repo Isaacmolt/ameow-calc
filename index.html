@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v2.2 updated 2026-09-03 -->
+<!-- v2.3 updated 2026-09-04 -->
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -348,6 +348,14 @@ const recipes = {
 
 let currentSize="4吋", currentQty=1, orders=[], oid=0;
 const doneGroups=new Set(); // 已勾選完成的口味，重新渲染後保留
+// 備料順序：原味奶凍 → 香草奶油類 → 紅茶奶凍 → 可可奶凍 → 茶類
+const flavorOrder=["原味奶凍","香草","紅茶","可可","金萱","鐵觀音","伯爵","焙茶"];
+const recipeNames=Object.keys(recipes);
+function flavorRank(f){const i=flavorOrder.indexOf(f);return i===-1?99:i;}
+function orderSortKey(o){return [flavorRank(recipes[o.name].flavor), recipeNames.indexOf(o.name), o.size==="4吋"?0:1];}
+function sortOrders(){
+  orders.sort((a,b)=>{const ka=orderSortKey(a),kb=orderSortKey(b);for(let i=0;i<ka.length;i++){if(ka[i]!==kb[i])return ka[i]-kb[i];}return a.id-b.id;});
+}
 
 function initSelect(){
   const sel=document.getElementById('cakeSelect');
@@ -373,7 +381,10 @@ function adjQty(d){
 
 function addOrder(){
   const name=document.getElementById('cakeSelect').value;
-  orders.push({id:++oid,name,size:currentSize,qty:currentQty});
+  const existing=orders.find(o=>o.name===name&&o.size===currentSize);
+  if(existing) existing.qty=Math.min(99,existing.qty+currentQty); // 同款同尺寸合併數量
+  else orders.push({id:++oid,name,size:currentSize,qty:currentQty});
+  sortOrders();
   currentQty=1;document.getElementById('qtyNum').textContent=1;
   renderOrders();renderResult();
 }
@@ -417,12 +428,8 @@ function renderResult(){
   const unitMap={"紅茶包":"包","吉利丁":"片","巧克力":"g"};
   const ord=["吉利丁","鮮奶油","牛奶","砂糖","糖","白巧克力","巧克力","可可粉","金萱茶粉","鐵觀音茶粉","伯爵茶粉","焙茶茶粉","香草籽醬","紅茶包","B鮮奶油"];
 
-  // Sort flavors by priority
-  const flavorOrder=["原味奶凍","香草","紅茶","可可","金萱","鐵觀音","伯爵","焙茶"];
-  const groupNames=Object.keys(groups).sort((a,b)=>{
-    const ia=flavorOrder.indexOf(a), ib=flavorOrder.indexOf(b);
-    return (ia===-1?99:ia)-(ib===-1?99:ib);
-  });
+  // Sort flavors by prep priority
+  const groupNames=Object.keys(groups).sort((a,b)=>flavorRank(a)-flavorRank(b));
   // 只保留目前仍存在的口味勾選狀態
   [...doneGroups].forEach(f=>{ if(!groups[f]) doneGroups.delete(f); });
   badge.textContent=`${groupNames.length} 品項`;
