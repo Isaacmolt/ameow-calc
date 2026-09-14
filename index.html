@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- v2.3 updated 2026-09-04 -->
+<!-- v2.4 updated 2026-09-14 -->
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -59,6 +59,19 @@ header {
 }
 .logo { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:600; color:var(--mocha); letter-spacing:2px; }
 .logo-line { width:40px; height:2px; background:linear-gradient(90deg,var(--butter),var(--caramel)); margin:6px auto 0; border-radius:2px; }
+
+/* Mode toggle: 戚風蛋糕 / 內餡 */
+.mode-toggle {
+  display:inline-flex; margin:10px auto 0;
+  background:var(--cream-dark); border-radius:12px; padding:3px; gap:2px;
+}
+.mode-btn {
+  padding:7px 22px; border:none; border-radius:10px;
+  background:transparent; color:var(--mocha);
+  font-family:'Noto Sans TC',sans-serif; font-size:13px; font-weight:400;
+  cursor:pointer; transition:all 0.2s;
+}
+.mode-btn.active { background:var(--white); color:var(--dark); font-weight:500; box-shadow:0 1px 6px rgba(74,55,40,0.12); }
 
 /* Builder */
 .builder {
@@ -271,7 +284,7 @@ header {
 .result-area.overview .group-check { width:18px; height:18px; font-size:10px; }
 
 @keyframes popIn { from{opacity:0;transform:scale(0.85)} to{opacity:1;transform:scale(1)} }
-@media (prefers-reduced-motion: reduce) { .order-tag { animation:none; } .group-block, .size-pill, .add-btn, .overview-btn { transition:none; } }
+@media (prefers-reduced-motion: reduce) { .order-tag { animation:none; } .group-block, .size-pill, .add-btn, .overview-btn, .mode-btn { transition:none; } }
 
 .result-scroll::-webkit-scrollbar { width:3px; }
 .result-scroll::-webkit-scrollbar-track { background:transparent; }
@@ -284,6 +297,10 @@ header {
   <header>
     <div class="logo">阿喵</div>
     <div class="logo-line"></div>
+    <div class="mode-toggle" id="modeToggle">
+      <button class="mode-btn" data-mode="chiffon" onclick="setMode('chiffon')">戚風蛋糕</button>
+      <button class="mode-btn active" data-mode="filling" onclick="setMode('filling')">內餡</button>
+    </div>
   </header>
 
   <div class="builder">
@@ -346,13 +363,38 @@ const recipes = {
   "漸層款式原味抹面奶油": { cat:"漸層", flavor:"香草", sizes:{ "4吋":{"鮮奶油":20,"砂糖":9,"香草籽醬":2}, "6吋":{"鮮奶油":50,"砂糖":16,"香草籽醬":3} }}
 };
 
-let currentSize="4吋", currentQty=1, orders=[], oid=0;
-const doneGroups=new Set(); // 已勾選完成的口味，重新渲染後保留
-// 備料順序：原味奶凍 → 香草奶油類 → 紅茶奶凍 → 可可奶凍 → 茶類
-const flavorOrder=["原味奶凍","香草","紅茶","可可","金萱","鐵觀音","伯爵","焙茶"];
-const recipeNames=Object.keys(recipes);
+// 戚風蛋糕（與內餡分開計算）
+const chiffonRecipes = {
+  "原味戚風": { cat:"戚風", flavor:"原味", sizes:{ "4吋":{"低筋麵粉":20,"沙拉油":10,"牛奶":12,"蛋黃":17,"砂糖":15,"蛋白":37}, "6吋":{"低筋麵粉":60,"沙拉油":30,"牛奶":36,"蛋黃":51,"砂糖":45,"蛋白":110} }},
+  "茶味戚風（金萱）": { cat:"戚風", flavor:"金萱", sizes:{ "4吋":{"低筋麵粉":17,"金萱茶粉":2,"沙拉油":10,"牛奶":16,"蛋黃":17,"砂糖":15,"蛋白":37}, "6吋":{"低筋麵粉":50,"金萱茶粉":4,"沙拉油":30,"牛奶":50,"蛋黃":52,"砂糖":45,"蛋白":110} }},
+  "茶味戚風（鐵觀音）": { cat:"戚風", flavor:"鐵觀音", sizes:{ "4吋":{"低筋麵粉":17,"鐵觀音茶粉":2,"沙拉油":10,"牛奶":16,"蛋黃":17,"砂糖":15,"蛋白":37}, "6吋":{"低筋麵粉":50,"鐵觀音茶粉":4,"沙拉油":30,"牛奶":50,"蛋黃":52,"砂糖":45,"蛋白":110} }},
+  "茶味戚風（伯爵）": { cat:"戚風", flavor:"伯爵", sizes:{ "4吋":{"低筋麵粉":17,"伯爵茶粉":2,"沙拉油":10,"牛奶":16,"蛋黃":17,"砂糖":15,"蛋白":37}, "6吋":{"低筋麵粉":50,"伯爵茶粉":4,"沙拉油":30,"牛奶":50,"蛋黃":52,"砂糖":45,"蛋白":110} }},
+  "茶味戚風（焙茶）": { cat:"戚風", flavor:"焙茶", sizes:{ "4吋":{"低筋麵粉":17,"焙茶茶粉":2,"沙拉油":10,"牛奶":16,"蛋黃":17,"砂糖":15,"蛋白":37}, "6吋":{"低筋麵粉":50,"焙茶茶粉":4,"沙拉油":30,"牛奶":50,"蛋黃":52,"砂糖":45,"蛋白":110} }}
+};
+
+// 兩個模式各自獨立的配方、材料顯示順序、品項清單與勾選狀態
+const modes={
+  filling:{ recipes, ord:["吉利丁","鮮奶油","牛奶","砂糖","糖","白巧克力","巧克力","可可粉","金萱茶粉","鐵觀音茶粉","伯爵茶粉","焙茶茶粉","香草籽醬","紅茶包","B鮮奶油"], orders:[], doneGroups:new Set() },
+  chiffon:{ recipes:chiffonRecipes, ord:["低筋麵粉","金萱茶粉","鐵觀音茶粉","伯爵茶粉","焙茶茶粉","沙拉油","牛奶","蛋黃","砂糖","蛋白"], orders:[], doneGroups:new Set() }
+};
+let mode='filling';
+let currentSize="4吋", currentQty=1, oid=0;
+let orders=modes[mode].orders;          // 永遠指向目前模式的陣列（只做原地修改，不重新指派）
+let doneGroups=modes[mode].doneGroups;  // 已勾選完成的口味，重新渲染後保留
+function R(){return modes[mode].recipes;}
+// 備料順序：原味奶凍 → 原味戚風 → 香草奶油類 → 紅茶奶凍 → 可可奶凍 → 茶類
+const flavorOrder=["原味奶凍","原味","香草","紅茶","可可","金萱","鐵觀音","伯爵","焙茶"];
 function flavorRank(f){const i=flavorOrder.indexOf(f);return i===-1?99:i;}
-function orderSortKey(o){return [flavorRank(recipes[o.name].flavor), recipeNames.indexOf(o.name), o.size==="4吋"?0:1];}
+function orderSortKey(o){return [flavorRank(R()[o.name].flavor), Object.keys(R()).indexOf(o.name), o.size==="4吋"?0:1];}
+
+function setMode(m){
+  if(!modes[m]) return;
+  mode=m; orders=modes[m].orders; doneGroups=modes[m].doneGroups;
+  document.querySelectorAll('.mode-btn').forEach(b=>b.classList.toggle('active',b.dataset.mode===m));
+  currentQty=1;document.getElementById('qtyNum').textContent=1;
+  initSelect();renderOrders();renderResult();
+  try{localStorage.setItem('ameow-mode',m);}catch(e){}
+}
 function sortOrders(){
   orders.sort((a,b)=>{const ka=orderSortKey(a),kb=orderSortKey(b);for(let i=0;i<ka.length;i++){if(ka[i]!==kb[i])return ka[i]-kb[i];}return a.id-b.id;});
 }
@@ -360,7 +402,7 @@ function sortOrders(){
 function initSelect(){
   const sel=document.getElementById('cakeSelect');
   let cat='',html='';
-  Object.entries(recipes).forEach(([n,r])=>{
+  Object.entries(R()).forEach(([n,r])=>{
     if(r.cat!==cat){if(cat)html+='</optgroup>';cat=r.cat;html+=`<optgroup label="── ${r.cat} ──">`;}
     html+=`<option value="${n}">${n}</option>`;
   });
@@ -389,8 +431,8 @@ function addOrder(){
   renderOrders();renderResult();
 }
 
-function removeOrder(id){orders=orders.filter(o=>o.id!==id);renderOrders();renderResult();}
-function clearAll(){orders=[];doneGroups.clear();renderOrders();renderResult();}
+function removeOrder(id){const i=orders.findIndex(o=>o.id===id);if(i>-1)orders.splice(i,1);renderOrders();renderResult();}
+function clearAll(){orders.length=0;doneGroups.clear();renderOrders();renderResult();}
 function toggleGroup(el){
   const blk=el.parentElement;
   blk.classList.toggle('done');
@@ -420,13 +462,13 @@ function renderResult(){
   // Group orders by flavor
   const groups={};
   orders.forEach(o=>{
-    const flavor=recipes[o.name].flavor;
+    const flavor=R()[o.name].flavor;
     if(!groups[flavor]) groups[flavor]=[];
     groups[flavor].push(o);
   });
 
   const unitMap={"紅茶包":"包","吉利丁":"片","巧克力":"g"};
-  const ord=["吉利丁","鮮奶油","牛奶","砂糖","糖","白巧克力","巧克力","可可粉","金萱茶粉","鐵觀音茶粉","伯爵茶粉","焙茶茶粉","香草籽醬","紅茶包","B鮮奶油"];
+  const ord=modes[mode].ord;
 
   // Sort flavors by prep priority
   const groupNames=Object.keys(groups).sort((a,b)=>flavorRank(a)-flavorRank(b));
@@ -458,7 +500,7 @@ function renderResult(){
     const gelatinFrac={num:0,den:3}; // track gelatin as thirds
     let hasGelatin=false;
     items.forEach(o=>{
-      const ings=recipes[o.name].sizes[o.size];
+      const ings=R()[o.name].sizes[o.size];
       Object.entries(ings).forEach(([k,v])=>{
         if(Array.isArray(v)){
           // Gelatin: [whole, numerator, denominator]
@@ -507,7 +549,7 @@ function renderResult(){
   content.innerHTML=html;
 }
 
-initSelect();renderOrders();renderResult();
+(function(){let m='filling';try{m=localStorage.getItem('ameow-mode')||m;}catch(e){}setMode(modes[m]?m:'filling');})();
 </script>
 </body>
 </html>
