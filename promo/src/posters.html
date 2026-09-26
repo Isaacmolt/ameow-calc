@@ -39,7 +39,7 @@
   #p1 .title { position: absolute; right: 70px; top: 120px; font-size: 44px; font-weight: 400; }
   #p1 .sub { position: absolute; right: 150px; top: 124px; font-size: 22px; color: var(--soft); }
   #p1 .seal { right: 82px; top: 610px; }
-  #p1 .foot { position: absolute; left: 90px; bottom: 110px; right: 90px; display: flex; justify-content: space-between; align-items: flex-end; }
+  #p1 .foot { position: absolute; left: 90px; bottom: 150px; right: 90px; display: flex; justify-content: space-between; align-items: baseline; }
   #p1 .line { font-size: 30px; font-weight: 300; line-height: 1.9; letter-spacing: .08em; }
   #p1 .en { font-size: 34px; color: var(--soft); }
 
@@ -47,69 +47,45 @@
   #p2 .photo { right: 0; top: 0; width: 700px; height: 1350px;
     background-image: url(cake-3.jpg); background-position: 45% 50%; }
   #p2 .no { position: absolute; left: 70px; top: 80px; font-size: 30px; color: var(--soft); }
-  #p2 .title { position: absolute; left: 200px; top: 190px; font-size: 48px; font-weight: 400; line-height: 1.6; }
+  #p2 .title { position: absolute; left: 110px; top: 190px; font-size: 48px; font-weight: 400; line-height: 1.6; }
   #p2 .body { position: absolute; left: 80px; top: 200px; font-size: 25px; font-weight: 300; color: #5c564e; line-height: 2.1; }
   #p2 .bottom { position: absolute; left: 70px; bottom: 80px; width: 260px; }
   #p2 .bottom p { font-size: 20px; line-height: 2; color: var(--soft); letter-spacing: .1em; }
   #p2 .rule { width: 40px; height: 1px; background: var(--soft); margin: 18px 0; }
 
   /* ---------- 03 ---------- */
-  #p3 { background: #efece4; }
-  #p3 .photo { left: 170px; top: 170px; width: 740px; height: 740px; border-radius: 50%;
-    background-image: url(cake-2.jpg); background-position: 40% 45%; }
-  #p3 .ring { position: absolute; left: 150px; top: 150px; width: 780px; height: 780px; border-radius: 50%; border: 1px solid #c9c2b4; }
-  #p3 .top { position: absolute; left: 0; right: 0; top: 70px; text-align: center; }
-  #p3 .words { position: absolute; left: 0; right: 0; top: 990px; text-align: center; }
-  #p3 .words h2 { font-size: 46px; font-weight: 400; letter-spacing: .3em; }
-  #p3 .words p { margin-top: 26px; font-size: 25px; font-weight: 300; color: #5c564e; letter-spacing: .14em; line-height: 1.9; }
-  #p3 .sign { position: absolute; left: 0; right: 0; bottom: 60px; text-align: center; }
-  #p3 .sign .en { font-size: 30px; color: var(--soft); }
+  #p3 .photo { left: 0; bottom: 0; width: 820px; height: 1060px;
+    background-image: url(cake-2.jpg); background-position: 35% 50%; }
+  #p3 .title { position: absolute; right: 90px; top: 300px; font-size: 44px; font-weight: 400; }
+  #p3 .en { position: absolute; right: 60px; bottom: 110px; font-size: 26px; color: var(--soft); }
 </style>
 </head>
 <body>
 
-<!-- 01：留白 + 直書 -->
+<!-- 01 -->
 <section class="poster" id="p1">
   <div class="photo"></div>
   <h1 class="title vt">今天是你的日子</h1>
-  <div class="sub vt">一顆一顆，慢慢排好</div>
   <div class="foot">
-    <div class="line">
-      蠟燭還沒點，<br>
-      房間裡已經有一點光了。
-    </div>
-    <div style="text-align:right">
-      <div class="en">Ameow's Food</div>
-    </div>
+    <div class="line">蠟燭還沒點，房間裡已經有一點光了。</div>
+    <div class="en">Ameow's Food</div>
   </div>
 </section>
 
-<!-- 02：左文右圖 -->
+<!-- 02 -->
 <section class="poster" id="p2">
   <div class="photo"></div>
-  <div class="no en">for your birthday</div>
   <h1 class="title vt">慢慢來，<br>生日快樂。</h1>
-  <div class="body vt">
-    手擠的小花，一朵一朵。<br>
-    巧克力淋下來，不必太整齊。
-  </div>
   <div class="bottom">
-    <p>願你這一年<br>也被溫柔地<br>對待</p>
-    <div class="rule"></div>
     <p class="en" style="font-size:26px;letter-spacing:.02em">Ameow's Food</p>
   </div>
 </section>
 
-<!-- 03：圓窗 -->
+<!-- 03 -->
 <section class="poster" id="p3">
-  <div class="top small">— &nbsp;今 日 の 小 蛋 糕&nbsp; —</div>
-  <div class="ring"></div>
+  <div class="en">Ameow's Food</div>
+  <h1 class="title vt">被記得，就很甜。</h1>
   <div class="photo"></div>
-  <div class="words">
-    <h2>綠色的，甜的</h2>
-    <p>有人記得你的生日<br>這件事本身就很甜</p>
-  </div>
-  <div class="sign"><span class="en">Ameow&rsquo;s Food</span></div>
 </section>
 
 </body>
