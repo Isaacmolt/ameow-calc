@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<link href="fonts.css" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f6f3ec;
+    --ink: #3a3631;
+    --soft: #8a8378;
+    --leaf: #7f9a5a;
+    --choco: #4a2f27;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ddd; font-family: "Noto Serif TC", serif; color: var(--ink); }
+  .poster {
+    width: 1080px; height: 1350px; background: var(--paper);
+    position: relative; overflow: hidden; margin-bottom: 40px;
+  }
+  /* paper grain */
+  .poster::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.28 0 0 0 0 0.25 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .photo { position: absolute; background-size: cover; background-position: center; }
+  .vt { writing-mode: vertical-rl; letter-spacing: .32em; }
+  .en { font-family: "Cormorant Garamond", serif; font-style: italic; }
+  .small { font-size: 22px; color: var(--soft); letter-spacing: .12em; }
+  .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--leaf); vertical-align: middle; }
+  .seal {
+    position: absolute; width: 58px; height: 58px; border: 1.5px solid #b5553f; color: #b5553f;
+    font-size: 22px; line-height: 1.1; display: flex; align-items: center; justify-content: center;
+    text-align: center; letter-spacing: 0; border-radius: 4px; transform: rotate(-4deg);
+  }
+
+  /* ---------- 01 ---------- */
+  #p1 .photo { left: 90px; top: 110px; width: 760px; height: 900px;
+    background-image: url(cake-1.jpg); background-position: 50% 40%; }
+  #p1 .title { position: absolute; right: 70px; top: 120px; font-size: 44px; font-weight: 400; }
+  #p1 .sub { position: absolute; right: 150px; top: 124px; font-size: 22px; color: var(--soft); }
+  #p1 .seal { right: 82px; top: 610px; }
+  #p1 .foot { position: absolute; left: 90px; bottom: 110px; right: 90px; display: flex; justify-content: space-between; align-items: flex-end; }
+  #p1 .line { font-size: 30px; font-weight: 300; line-height: 1.9; letter-spacing: .08em; }
+  #p1 .en { font-size: 34px; color: var(--soft); }
+
+  /* ---------- 02 ---------- */
+  #p2 .photo { right: 0; top: 0; width: 700px; height: 1350px;
+    background-image: url(cake-3.jpg); background-position: 45% 50%; }
+  #p2 .no { position: absolute; left: 70px; top: 80px; font-size: 30px; color: var(--soft); }
+  #p2 .title { position: absolute; left: 200px; top: 190px; font-size: 48px; font-weight: 400; line-height: 1.6; }
+  #p2 .body { position: absolute; left: 80px; top: 200px; font-size: 25px; font-weight: 300; color: #5c564e; line-height: 2.1; }
+  #p2 .bottom { position: absolute; left: 70px; bottom: 80px; width: 260px; }
+  #p2 .bottom p { font-size: 20px; line-height: 2; color: var(--soft); letter-spacing: .1em; }
+  #p2 .rule { width: 40px; height: 1px; background: var(--soft); margin: 18px 0; }
+
+  /* ---------- 03 ---------- */
+  #p3 { background: #efece4; }
+  #p3 .photo { left: 170px; top: 170px; width: 740px; height: 740px; border-radius: 50%;
+    background-image: url(cake-2.jpg); background-position: 40% 45%; }
+  #p3 .ring { position: absolute; left: 150px; top: 150px; width: 780px; height: 780px; border-radius: 50%; border: 1px solid #c9c2b4; }
+  #p3 .top { position: absolute; left: 0; right: 0; top: 70px; text-align: center; }
+  #p3 .words { position: absolute; left: 0; right: 0; top: 990px; text-align: center; }
+  #p3 .words h2 { font-size: 46px; font-weight: 400; letter-spacing: .3em; }
+  #p3 .words p { margin-top: 26px; font-size: 25px; font-weight: 300; color: #5c564e; letter-spacing: .14em; line-height: 1.9; }
+  #p3 .sign { position: absolute; left: 0; right: 0; bottom: 60px; text-align: center; }
+  #p3 .sign .en { font-size: 30px; color: var(--soft); }
+</style>
+</head>
+<body>
+
+<!-- 01：留白 + 直書 -->
+<section class="poster" id="p1">
+  <div class="photo"></div>
+  <h1 class="title vt">麝香葡萄生日蛋糕</h1>
+  <div class="sub vt">苦甜巧克力 ・ 動物鮮奶油</div>
+  <div class="seal">阿喵<br>手作</div>
+  <div class="foot">
+    <div class="line">
+      把一整盒綠色的夏天，<br>
+      一顆一顆排上去。
+    </div>
+    <div style="text-align:right">
+      <div class="en">Ameow's Food</div>
+      <div class="small" style="margin-top:8px">想吃的話，私訊阿喵就好 <span class="dot"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02：左文右圖 -->
+<section class="poster" id="p2">
+  <div class="photo"></div>
+  <div class="no en">for your birthday</div>
+  <h1 class="title vt">慢慢來，<br>生日快樂。</h1>
+  <div class="body vt">
+    手擠的小花，一朵一朵。<br>
+    巧克力淋下來，不必太整齊。
+  </div>
+  <div class="bottom">
+    <p>麝香葡萄<br>苦甜巧克力淋面<br>香草鮮奶油</p>
+    <div class="rule"></div>
+    <p class="en" style="font-size:26px;letter-spacing:.02em">Ameow's Food</p>
+    <p>接受預訂 ・ 私訊聊聊</p>
+  </div>
+</section>
+
+<!-- 03：圓窗 -->
+<section class="poster" id="p3">
+  <div class="top small">— &nbsp;今 日 の 小 蛋 糕&nbsp; —</div>
+  <div class="ring"></div>
+  <div class="photo"></div>
+  <div class="words">
+    <h2>綠色的，甜的</h2>
+    <p>麝香葡萄 × 苦甜巧克力<br>給今天要被好好慶祝的人</p>
+  </div>
+  <div class="sign"><span class="en">Ameow&rsquo;s Food</span>&nbsp;&nbsp;·&nbsp;&nbsp;<span class="small">訂蛋糕請私訊</span></div>
+</section>
+
+</body>
+</html>
