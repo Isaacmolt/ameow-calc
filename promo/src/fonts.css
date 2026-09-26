@@ -2,41 +2,41 @@
   font-family: 'Noto Serif TC';
   font-style: normal;
   font-weight: 300;
-  src: url(fonts/f-NotoSerifTC-0-0.woff2) format('woff2');
-  unicode-range: U+20, U+27, U+2e, U+30-39, U+41, U+46, U+64-65, U+6d-6f, U+73, U+77, U+a0, U+d7, U+2014, U+3002, U+306e, U+30fb, U+4e00, U+4e0a-4e0b, U+4e0d, U+4eba, U+4eca, U+4f5c, U+4f86, U+514b, U+529b, U+52d5, U+53bb, U+53d7, U+5403, U+55b5, U+590f, U+5929-592a, U+5976, U+597d, U+5c0f, U+5c31, U+5de7, U+5fc5, U+5feb, U+60f3, U+6162, U+6176, U+624b, U+628a, U+6392, U+63a5, U+64e0, U+6574, U+65e5, U+6735, U+6a02, U+6cb9, U+6dcb, U+7269, U+751c, U+751f, U+7684, U+76d2, U+795d, U+79c1, U+7cd5, U+7d66, U+7da0, U+804a, U+8272, U+82b1, U+82e6, U+8349, U+8404, U+8461, U+86cb, U+88ab, U+8981, U+8a02, U+8a0a, U+8a71, U+8acb, U+963f, U+9762, U+9810, U+9846, U+9999, U+9bae, U+9e9d, U+9f4a, U+ff0c;
+  src: url(fonts/f-NotoSerifTC-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+30-39, U+41, U+46, U+61-62, U+64-66, U+68-69, U+6d, U+6f, U+72-75, U+77, U+79, U+a0, U+2014, U+2019, U+3002, U+306e, U+4e00, U+4e0b, U+4e0d, U+4e5f, U+4e86, U+4e8b, U+4eba, U+4eca, U+4ef6, U+4f60, U+4f86, U+5149, U+514b, U+529b, U+5730, U+5929-592a, U+597d, U+5b50, U+5c0d, U+5c0f, U+5c31, U+5de7, U+5df2, U+5e74, U+5f85, U+5f88, U+5f97, U+5fc5, U+5feb, U+6162, U+623f, U+624b, U+6392, U+64e0, U+6574, U+65e5, U+662f, U+6709, U+672c, U+6735, U+67d4, U+6a02, U+6c92, U+6dcb, U+6eab, U+71ed, U+751c, U+751f, U+7684, U+7cd5, U+7d93, U+7da0, U+8272, U+82b1, U+86cb, U+881f, U+88ab, U+88e1, U+8a18, U+8eab, U+9019, U+9084, U+9593, U+9846, U+9858, U+9ede, U+9f4a, U+ff0c;
 }
 @font-face {
   font-family: 'Noto Serif TC';
   font-style: normal;
   font-weight: 400;
-  src: url(fonts/f-NotoSerifTC-0-0.woff2) format('woff2');
-  unicode-range: U+20, U+27, U+2e, U+30-39, U+41, U+46, U+64-65, U+6d-6f, U+73, U+77, U+a0, U+d7, U+2014, U+3002, U+306e, U+30fb, U+4e00, U+4e0a-4e0b, U+4e0d, U+4eba, U+4eca, U+4f5c, U+4f86, U+514b, U+529b, U+52d5, U+53bb, U+53d7, U+5403, U+55b5, U+590f, U+5929-592a, U+5976, U+597d, U+5c0f, U+5c31, U+5de7, U+5fc5, U+5feb, U+60f3, U+6162, U+6176, U+624b, U+628a, U+6392, U+63a5, U+64e0, U+6574, U+65e5, U+6735, U+6a02, U+6cb9, U+6dcb, U+7269, U+751c, U+751f, U+7684, U+76d2, U+795d, U+79c1, U+7cd5, U+7d66, U+7da0, U+804a, U+8272, U+82b1, U+82e6, U+8349, U+8404, U+8461, U+86cb, U+88ab, U+8981, U+8a02, U+8a0a, U+8a71, U+8acb, U+963f, U+9762, U+9810, U+9846, U+9999, U+9bae, U+9e9d, U+9f4a, U+ff0c;
+  src: url(fonts/f-NotoSerifTC-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+30-39, U+41, U+46, U+61-62, U+64-66, U+68-69, U+6d, U+6f, U+72-75, U+77, U+79, U+a0, U+2014, U+2019, U+3002, U+306e, U+4e00, U+4e0b, U+4e0d, U+4e5f, U+4e86, U+4e8b, U+4eba, U+4eca, U+4ef6, U+4f60, U+4f86, U+5149, U+514b, U+529b, U+5730, U+5929-592a, U+597d, U+5b50, U+5c0d, U+5c0f, U+5c31, U+5de7, U+5df2, U+5e74, U+5f85, U+5f88, U+5f97, U+5fc5, U+5feb, U+6162, U+623f, U+624b, U+6392, U+64e0, U+6574, U+65e5, U+662f, U+6709, U+672c, U+6735, U+67d4, U+6a02, U+6c92, U+6dcb, U+6eab, U+71ed, U+751c, U+751f, U+7684, U+7cd5, U+7d93, U+7da0, U+8272, U+82b1, U+86cb, U+881f, U+88ab, U+88e1, U+8a18, U+8eab, U+9019, U+9084, U+9593, U+9846, U+9858, U+9ede, U+9f4a, U+ff0c;
 }
 @font-face {
   font-family: 'Noto Serif TC';
   font-style: normal;
   font-weight: 600;
-  src: url(fonts/f-NotoSerifTC-0-0.woff2) format('woff2');
-  unicode-range: U+20, U+27, U+2e, U+30-39, U+41, U+46, U+64-65, U+6d-6f, U+73, U+77, U+a0, U+d7, U+2014, U+3002, U+306e, U+30fb, U+4e00, U+4e0a-4e0b, U+4e0d, U+4eba, U+4eca, U+4f5c, U+4f86, U+514b, U+529b, U+52d5, U+53bb, U+53d7, U+5403, U+55b5, U+590f, U+5929-592a, U+5976, U+597d, U+5c0f, U+5c31, U+5de7, U+5fc5, U+5feb, U+60f3, U+6162, U+6176, U+624b, U+628a, U+6392, U+63a5, U+64e0, U+6574, U+65e5, U+6735, U+6a02, U+6cb9, U+6dcb, U+7269, U+751c, U+751f, U+7684, U+76d2, U+795d, U+79c1, U+7cd5, U+7d66, U+7da0, U+804a, U+8272, U+82b1, U+82e6, U+8349, U+8404, U+8461, U+86cb, U+88ab, U+8981, U+8a02, U+8a0a, U+8a71, U+8acb, U+963f, U+9762, U+9810, U+9846, U+9999, U+9bae, U+9e9d, U+9f4a, U+ff0c;
+  src: url(fonts/f-NotoSerifTC-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+30-39, U+41, U+46, U+61-62, U+64-66, U+68-69, U+6d, U+6f, U+72-75, U+77, U+79, U+a0, U+2014, U+2019, U+3002, U+306e, U+4e00, U+4e0b, U+4e0d, U+4e5f, U+4e86, U+4e8b, U+4eba, U+4eca, U+4ef6, U+4f60, U+4f86, U+5149, U+514b, U+529b, U+5730, U+5929-592a, U+597d, U+5b50, U+5c0d, U+5c0f, U+5c31, U+5de7, U+5df2, U+5e74, U+5f85, U+5f88, U+5f97, U+5fc5, U+5feb, U+6162, U+623f, U+624b, U+6392, U+64e0, U+6574, U+65e5, U+662f, U+6709, U+672c, U+6735, U+67d4, U+6a02, U+6c92, U+6dcb, U+6eab, U+71ed, U+751c, U+751f, U+7684, U+7cd5, U+7d93, U+7da0, U+8272, U+82b1, U+86cb, U+881f, U+88ab, U+88e1, U+8a18, U+8eab, U+9019, U+9084, U+9593, U+9846, U+9858, U+9ede, U+9f4a, U+ff0c;
 }
 @font-face {
   font-family: 'Cormorant Garamond';
   font-style: italic;
   font-weight: 400;
-  src: url(fonts/f-CormorantGaramond-2544-0.woff2) format('woff2');
-  unicode-range: U+20, U+27, U+2e, U+30-39, U+41, U+46, U+64-65, U+6d-6f, U+73, U+77, U+a0, U+d7, U+2014, U+3002, U+306e, U+30fb, U+4e00, U+4e0a-4e0b, U+4e0d, U+4eba, U+4eca, U+4f5c, U+4f86, U+514b, U+529b, U+52d5, U+53bb, U+53d7, U+5403, U+55b5, U+590f, U+5929-592a, U+5976, U+597d, U+5c0f, U+5c31, U+5de7, U+5fc5, U+5feb, U+60f3, U+6162, U+6176, U+624b, U+628a, U+6392, U+63a5, U+64e0, U+6574, U+65e5, U+6735, U+6a02, U+6cb9, U+6dcb, U+7269, U+751c, U+751f, U+7684, U+76d2, U+795d, U+79c1, U+7cd5, U+7d66, U+7da0, U+804a, U+8272, U+82b1, U+82e6, U+8349, U+8404, U+8461, U+86cb, U+88ab, U+8981, U+8a02, U+8a0a, U+8a71, U+8acb, U+963f, U+9762, U+9810, U+9846, U+9999, U+9bae, U+9e9d, U+9f4a, U+ff0c;
+  src: url(fonts/f-CormorantGaramond-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+30-39, U+41, U+46, U+61-62, U+64-66, U+68-69, U+6d, U+6f, U+72-75, U+77, U+79, U+a0, U+2014, U+2019, U+3002, U+306e, U+4e00, U+4e0b, U+4e0d, U+4e5f, U+4e86, U+4e8b, U+4eba, U+4eca, U+4ef6, U+4f60, U+4f86, U+5149, U+514b, U+529b, U+5730, U+5929-592a, U+597d, U+5b50, U+5c0d, U+5c0f, U+5c31, U+5de7, U+5df2, U+5e74, U+5f85, U+5f88, U+5f97, U+5fc5, U+5feb, U+6162, U+623f, U+624b, U+6392, U+64e0, U+6574, U+65e5, U+662f, U+6709, U+672c, U+6735, U+67d4, U+6a02, U+6c92, U+6dcb, U+6eab, U+71ed, U+751c, U+751f, U+7684, U+7cd5, U+7d93, U+7da0, U+8272, U+82b1, U+86cb, U+881f, U+88ab, U+88e1, U+8a18, U+8eab, U+9019, U+9084, U+9593, U+9846, U+9858, U+9ede, U+9f4a, U+ff0c;
 }
 @font-face {
   font-family: 'Cormorant Garamond';
   font-style: italic;
   font-weight: 500;
-  src: url(fonts/f-CormorantGaramond-2544-0.woff2) format('woff2');
-  unicode-range: U+20, U+27, U+2e, U+30-39, U+41, U+46, U+64-65, U+6d-6f, U+73, U+77, U+a0, U+d7, U+2014, U+3002, U+306e, U+30fb, U+4e00, U+4e0a-4e0b, U+4e0d, U+4eba, U+4eca, U+4f5c, U+4f86, U+514b, U+529b, U+52d5, U+53bb, U+53d7, U+5403, U+55b5, U+590f, U+5929-592a, U+5976, U+597d, U+5c0f, U+5c31, U+5de7, U+5fc5, U+5feb, U+60f3, U+6162, U+6176, U+624b, U+628a, U+6392, U+63a5, U+64e0, U+6574, U+65e5, U+6735, U+6a02, U+6cb9, U+6dcb, U+7269, U+751c, U+751f, U+7684, U+76d2, U+795d, U+79c1, U+7cd5, U+7d66, U+7da0, U+804a, U+8272, U+82b1, U+82e6, U+8349, U+8404, U+8461, U+86cb, U+88ab, U+8981, U+8a02, U+8a0a, U+8a71, U+8acb, U+963f, U+9762, U+9810, U+9846, U+9999, U+9bae, U+9e9d, U+9f4a, U+ff0c;
+  src: url(fonts/f-CormorantGaramond-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+30-39, U+41, U+46, U+61-62, U+64-66, U+68-69, U+6d, U+6f, U+72-75, U+77, U+79, U+a0, U+2014, U+2019, U+3002, U+306e, U+4e00, U+4e0b, U+4e0d, U+4e5f, U+4e86, U+4e8b, U+4eba, U+4eca, U+4ef6, U+4f60, U+4f86, U+5149, U+514b, U+529b, U+5730, U+5929-592a, U+597d, U+5b50, U+5c0d, U+5c0f, U+5c31, U+5de7, U+5df2, U+5e74, U+5f85, U+5f88, U+5f97, U+5fc5, U+5feb, U+6162, U+623f, U+624b, U+6392, U+64e0, U+6574, U+65e5, U+662f, U+6709, U+672c, U+6735, U+67d4, U+6a02, U+6c92, U+6dcb, U+6eab, U+71ed, U+751c, U+751f, U+7684, U+7cd5, U+7d93, U+7da0, U+8272, U+82b1, U+86cb, U+881f, U+88ab, U+88e1, U+8a18, U+8eab, U+9019, U+9084, U+9593, U+9846, U+9858, U+9ede, U+9f4a, U+ff0c;
 }
 @font-face {
   font-family: 'Cormorant Garamond';
   font-style: normal;
   font-weight: 400;
-  src: url(fonts/f-CormorantGaramond-2544-2.woff2) format('woff2');
-  unicode-range: U+20, U+27, U+2e, U+30-39, U+41, U+46, U+64-65, U+6d-6f, U+73, U+77, U+a0, U+d7, U+2014, U+3002, U+306e, U+30fb, U+4e00, U+4e0a-4e0b, U+4e0d, U+4eba, U+4eca, U+4f5c, U+4f86, U+514b, U+529b, U+52d5, U+53bb, U+53d7, U+5403, U+55b5, U+590f, U+5929-592a, U+5976, U+597d, U+5c0f, U+5c31, U+5de7, U+5fc5, U+5feb, U+60f3, U+6162, U+6176, U+624b, U+628a, U+6392, U+63a5, U+64e0, U+6574, U+65e5, U+6735, U+6a02, U+6cb9, U+6dcb, U+7269, U+751c, U+751f, U+7684, U+76d2, U+795d, U+79c1, U+7cd5, U+7d66, U+7da0, U+804a, U+8272, U+82b1, U+82e6, U+8349, U+8404, U+8461, U+86cb, U+88ab, U+8981, U+8a02, U+8a0a, U+8a71, U+8acb, U+963f, U+9762, U+9810, U+9846, U+9999, U+9bae, U+9e9d, U+9f4a, U+ff0c;
+  src: url(fonts/f-CormorantGaramond-2.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+30-39, U+41, U+46, U+61-62, U+64-66, U+68-69, U+6d, U+6f, U+72-75, U+77, U+79, U+a0, U+2014, U+2019, U+3002, U+306e, U+4e00, U+4e0b, U+4e0d, U+4e5f, U+4e86, U+4e8b, U+4eba, U+4eca, U+4ef6, U+4f60, U+4f86, U+5149, U+514b, U+529b, U+5730, U+5929-592a, U+597d, U+5b50, U+5c0d, U+5c0f, U+5c31, U+5de7, U+5df2, U+5e74, U+5f85, U+5f88, U+5f97, U+5fc5, U+5feb, U+6162, U+623f, U+624b, U+6392, U+64e0, U+6574, U+65e5, U+662f, U+6709, U+672c, U+6735, U+67d4, U+6a02, U+6c92, U+6dcb, U+6eab, U+71ed, U+751c, U+751f, U+7684, U+7cd5, U+7d93, U+7da0, U+8272, U+82b1, U+86cb, U+881f, U+88ab, U+88e1, U+8a18, U+8eab, U+9019, U+9084, U+9593, U+9846, U+9858, U+9ede, U+9f4a, U+ff0c;
 }
