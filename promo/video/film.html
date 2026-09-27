@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<link href="fonts.css" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4f1ec;
+    --ink: #3f3a35;
+    --soft: #9a9288;
+    --choco: #4a2c24;
+    --choco-hi: #6b4034;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--paper); }
+  body { font-family: "Noto Serif TC", serif; color: var(--ink); }
+  .abs { position: absolute; }
+  #stage { position: absolute; inset: 0; overflow: hidden; background: var(--paper); }
+  .full { position: absolute; inset: 0; }
+  .img { position: absolute; inset: 0; background-size: cover; background-position: center; will-change: transform; }
+  .en { font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 400; }
+  .hand { font-family: "LXGW WenKai TC", serif; }
+  .ch { display: inline-block; will-change: transform, opacity, filter; }
+
+  /* ---------- scene 1 : grapes ---------- */
+  .grape {
+    position: absolute; width: 190px; height: 190px; margin: -95px 0 0 -95px; border-radius: 50%;
+    background:
+      radial-gradient(circle at 34% 28%, rgba(255,255,240,.95) 0 6%, rgba(255,255,240,0) 16%),
+      radial-gradient(circle at 40% 38%, #e3eeb6 0%, #c2d68a 30%, #a4bf64 68%, #86a24a 100%);
+    box-shadow: inset -10px -14px 26px rgba(70,95,30,.28), 0 18px 30px rgba(90,110,50,.16);
+  }
+  .grape::after { /* muscat vein */
+    content: ""; position: absolute; left: 50%; top: 14%; bottom: 14%; width: 2px; margin-left: -1px;
+    background: linear-gradient(transparent, rgba(255,255,230,.35), transparent); border-radius: 2px;
+  }
+  #logo1 { left: 0; right: 0; top: 1150px; text-align: center; font-size: 96px; color: var(--ink); }
+  #sub1 { left: 0; right: 0; top: 1300px; text-align: center; font-size: 34px; color: var(--soft); letter-spacing: .3em; }
+
+  /* ---------- scene 2 ---------- */
+  #s2cap { left: 90px; top: 1690px; font-size: 52px; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.25); }
+  #s2line { left: 90px; top: 1660px; height: 2px; background: rgba(255,255,255,.85); }
+  #gloss { position: absolute; top: -400px; width: 380px; height: 2800px;
+    background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.28) 50%, rgba(255,255,255,0));
+    mix-blend-mode: soft-light; transform: rotate(18deg); }
+
+  /* ---------- scene 3 ---------- */
+  #panel { left: 80px; top: 280px; width: 640px; height: 1200px; border-radius: 30px; overflow: hidden; }
+  .vt { writing-mode: vertical-rl; font-size: 70px; font-weight: 400; letter-spacing: .22em; line-height: 1; }
+  #col1 { left: 890px; top: 330px; }
+  #col2 { left: 790px; top: 450px; }
+  #s3en { left: 86px; top: 1560px; font-size: 42px; color: var(--soft); }
+  .bokeh { position: absolute; border-radius: 50%;
+    background: radial-gradient(circle at 38% 34%, rgba(236,244,200,.9), rgba(170,196,110,.55) 60%, rgba(150,180,90,0) 72%); }
+
+  /* ---------- scene 4 / 5 ---------- */
+  #s4 { transform-origin: 540px 960px; }
+  #frame { position: absolute; left: 116px; top: 436px; width: 848px; height: 1240px; background: #fdfcf9;
+    border-radius: 8px; box-shadow: 0 40px 80px rgba(80,60,40,.16), 0 4px 12px rgba(80,60,40,.08); }
+  #photos { position: absolute; inset: 0; }
+  .strip { position: absolute; inset: 0; overflow: hidden; }
+  #glow { position: absolute; inset: 0; mix-blend-mode: screen;
+    background: radial-gradient(circle at 540px 760px, rgba(255,214,150,.75), rgba(255,200,130,.25) 30%, rgba(255,190,120,0) 55%); }
+  #fadeB { position: absolute; left: 0; right: 0; bottom: 0; height: 620px;
+    background: linear-gradient(rgba(244,241,236,0), rgba(244,241,236,.92) 70%, var(--paper)); }
+  #s4txt { left: 0; right: 0; top: 1640px; text-align: center; font-size: 54px; letter-spacing: .34em; }
+  #cardTxt { left: 116px; width: 848px; top: 1500px; text-align: center; font-size: 50px; color: var(--ink); letter-spacing: .08em; }
+  #tape { left: 450px; top: 400px; width: 180px; height: 58px; background: rgba(205,219,178,.8);
+    box-shadow: 0 1px 2px rgba(0,0,0,.04); }
+  #logo5 { left: 0; right: 0; top: 1620px; text-align: center; font-size: 56px; color: var(--soft); }
+
+  /* ---------- finishing ---------- */
+  #grain { position: absolute; inset: -60px; pointer-events: none; opacity: .32; mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.25 0 0 0 .22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  #vignette { position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(ellipse at 50% 48%, rgba(0,0,0,0) 55%, rgba(60,40,25,.09) 100%); }
+</style>
+</head>
+<body>
+<div id="stage">
+
+  <!-- scene 3 sits lowest: revealed after the chocolate curtain passes -->
+  <div id="s3" class="full">
+    <div id="panel" class="abs"><div id="panelImg" class="img" style="background-image:url(../src/cake-2.jpg);background-position:40% 45%"></div></div>
+    <div id="bokehs"></div>
+    <div id="col1" class="abs vt"></div>
+    <div id="col2" class="abs vt"></div>
+    <div id="s3en" class="abs en"></div>
+  </div>
+
+  <!-- scene 2: macro shot, revealed through the growing grape -->
+  <div id="s2" class="full">
+    <div id="s2img" class="img" style="background-image:url(../src/cake-3.jpg);background-position:42% 50%"></div>
+    <div id="gloss"></div>
+    <div class="abs" style="left:0;right:0;bottom:0;height:520px;background:linear-gradient(rgba(40,25,15,0),rgba(40,25,15,.38))"></div>
+    <div id="s2line" class="abs"></div>
+    <div id="s2cap" class="abs en"></div>
+  </div>
+
+  <!-- chocolate curtain -->
+  <svg id="choco" class="full" width="1080" height="1920" viewBox="0 0 1080 1920"></svg>
+
+  <!-- scene 1: grapes on paper -->
+  <div id="s1" class="full">
+    <svg id="ring" class="full" width="1080" height="1920" viewBox="0 0 1080 1920">
+      <circle id="ringC" cx="540" cy="860" r="420" fill="none" stroke="#c9c1b3" stroke-width="2"/>
+    </svg>
+    <div id="grapes"></div>
+    <svg id="leaf1" class="abs" width="240" height="300" viewBox="0 0 240 300" style="left:640px;top:560px"></svg>
+    <div id="logo1" class="abs en"></div>
+    <div id="sub1" class="abs en"></div>
+  </div>
+
+  <!-- scene 4 → 5: hero photo in vertical strips that becomes a polaroid -->
+  <div id="s4" class="full">
+    <div id="frame"></div>
+    <div id="photos"></div>
+    <div id="cardTxt" class="abs hand"></div>
+    <div id="tape" class="abs"></div>
+    <svg id="leaf2" class="abs" width="240" height="300" viewBox="0 0 240 300" style="left:800px;top:330px"></svg>
+  </div>
+  <div id="s4over" class="full">
+    <div id="fadeB"></div>
+    <div id="s4txt" class="abs"></div>
+  </div>
+  <div id="logo5" class="abs en"></div>
+
+  <div id="vignette"></div>
+  <div id="grain"></div>
+</div>
+
+<script>
+/* ============ helpers ============ */
+const $ = id => document.getElementById(id);
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, p) => a + (b - a) * p;
+const prog = (t, a, b) => clamp((t - a) / (b - a));
+const E = {
+  outCubic: p => 1 - Math.pow(1 - p, 3),
+  inCubic: p => p * p * p,
+  inOutCubic: p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2,
+  outExpo: p => p === 1 ? 1 : 1 - Math.pow(2, -10 * p),
+  inOutExpo: p => p === 0 ? 0 : p === 1 ? 1 : p < .5 ? Math.pow(2, 20 * p - 10) / 2 : (2 - Math.pow(2, -20 * p + 10)) / 2,
+  inOutQuart: p => p < .5 ? 8 * p * p * p * p : 1 - Math.pow(-2 * p + 2, 4) / 2,
+  inOutSine: p => -(Math.cos(Math.PI * p) - 1) / 2,
+  // damped spring 0 → 1 with a gentle overshoot
+  spring: p => p <= 0 ? 0 : p >= 1 ? 1 : 1 - Math.exp(-6.5 * p) * Math.cos(10.5 * p),
+};
+function rand(seed) { let s = seed; return () => (s = (s * 16807) % 2147483647) / 2147483647; }
+
+// split text into animated character spans
+function chars(el, text) {
+  el.innerHTML = '';
+  return [...text].map(c => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c === ' ' ? ' ' : c; el.appendChild(s); return s; });
+}
+// soft "ink settles" reveal used by every line of type
+function reveal(spans, t, start, step, dur, { dx = 0, dy = 36, blur = 10 } = {}) {
+  spans.forEach((s, i) => {
+    const p = E.outCubic(prog(t, start + i * step, start + i * step + dur));
+    s.style.opacity = p;
+    s.style.transform = `translate(${dx * (1 - p)}px, ${dy * (1 - p)}px)`;
+    s.style.filter = p < 1 ? `blur(${blur * (1 - p)}px)` : 'none';
+  });
+}
+
+/* ============ build ============ */
+// grapes: a hex cluster, like the top of the cake
+const G = [{ x: 540, y: 860, t: .5 }];
+[.875, 1.0, 1.5, 2.0, 2.5, 2.75].forEach((tt, i) => {
+  const a = (i * 60 - 90) * Math.PI / 180;
+  G.push({ x: 540 + Math.cos(a) * 200, y: 860 + Math.sin(a) * 200, t: tt, a });
+});
+G.forEach(g => { g.el = document.createElement('div'); g.el.className = 'grape'; $('grapes').appendChild(g.el); });
+
+// leaf sprig drawn as stem + paired leaves
+function buildLeaf(svg) {
+  const ns = 'http://www.w3.org/2000/svg';
+  const stem = document.createElementNS(ns, 'path');
+  stem.setAttribute('d', 'M120 290 C 118 220, 124 150, 120 30');
+  stem.setAttribute('stroke', '#3f6436'); stem.setAttribute('stroke-width', '5'); stem.setAttribute('fill', 'none'); stem.setAttribute('stroke-linecap', 'round');
+  svg.appendChild(stem);
+  const leaves = [];
+  [[250, 1], [250, -1], [190, 1], [190, -1], [130, 1], [130, -1], [70, 1], [70, -1], [30, 0]].forEach(([y, side], i) => {
+    const l = document.createElementNS(ns, 'ellipse');
+    const w = side === 0 ? 16 : 34 - i * 2.2, h = side === 0 ? 30 : 16 - i * .8;
+    l.setAttribute('rx', w); l.setAttribute('ry', h); l.setAttribute('fill', i % 2 ? '#35572f' : '#416b39');
+    l.dataset.x = 120 + side * (w + 2); l.dataset.y = y; l.dataset.r = side * -28;
+    svg.appendChild(l); leaves.push(l);
+  });
+  const len = stem.getTotalLength();
+  stem.style.strokeDasharray = len;
+  return { stem, leaves, len };
+}
+function drawLeaf(L, t, start, dur = .7) {
+  const p = E.inOutCubic(prog(t, start, start + dur * .6));
+  L.stem.style.strokeDashoffset = L.len * (1 - p);
+  L.leaves.forEach((l, i) => {
+    const q = E.spring(prog(t, start + .12 + (L.leaves.length - 1 - i) * .05, start + .12 + (L.leaves.length - 1 - i) * .05 + .55));
+    l.setAttribute('transform', `translate(${l.dataset.x} ${l.dataset.y}) rotate(${l.dataset.r}) scale(${Math.max(q, 0.0001)})`);
+  });
+}
+const leaf1 = buildLeaf($('leaf1'));
+const leaf2 = buildLeaf($('leaf2'));
+
+const logo1 = chars($('logo1'), "Ameow's Food");
+const sub1 = chars($('sub1'), 'for your birthday');
+const s2cap = chars($('s2cap'), 'a little green cake');
+const col1 = chars($('col1'), '慢慢來，');
+const col2 = chars($('col2'), '生日快樂。');
+const s3en = chars($('s3en'), 'slowly, happy birthday');
+const s4txt = chars($('s4txt'), '今天是你的日子');
+const cardTxt = chars($('cardTxt'), '被記得，就很甜。');
+const logo5 = chars($('logo5'), "Ameow's Food");
+
+// bokeh grapes drifting through scene 3
+const R = rand(7);
+const B = Array.from({ length: 9 }, () => {
+  const el = document.createElement('div'); el.className = 'bokeh';
+  const size = 30 + R() * 90; el.style.width = el.style.height = size + 'px';
+  $('bokehs').appendChild(el);
+  return { el, x: 60 + R() * 960, y: 300 + R() * 1400, sp: 60 + R() * 140, z: .4 + R() * .6, ph: R() * 6 };
+});
+
+// hero photo cut into 6 vertical strips
+const NS = 6, strips = [];
+for (let i = 0; i < NS; i++) {
+  const w = document.createElement('div'); w.className = 'strip';
+  const l = (i / NS) * 100, r = 100 - ((i + 1) / NS) * 100;
+  w.style.clipPath = `inset(0 ${r - .05}% 0 ${l - .05}%)`;
+  const im = document.createElement('div'); im.className = 'img';
+  im.style.backgroundImage = 'url(../src/cake-1.jpg)'; im.style.backgroundPosition = '52% 46%';
+  w.appendChild(im); $('photos').appendChild(w); strips.push({ w, im });
+}
+const glow = document.createElement('div'); glow.id = 'glow'; $('photos').appendChild(glow);
+
+// chocolate curtain drips
+const DR = rand(21);
+const drips = Array.from({ length: 12 }, (_, i) => ({
+  x: -20 + i * 96 + DR() * 40, w: 46 + DR() * 50, len: 120 + DR() * 320, lag: DR() * .25,
+}));
+
+/* ============ timeline ============ */
+function show(el, on) { el.style.display = on ? '' : 'none'; }
+
+window.render = function (t) {
+  /* ---- scene 1 : 0 → 3.6 ---- */
+  show($('s1'), t < 3.7);
+  if (t < 3.7) {
+    const exit = prog(t, 2.85, 3.2);
+    G.forEach((g, i) => {
+      const p = E.spring(prog(t, g.t, g.t + .75));
+      const drop = (1 - E.outCubic(prog(t, g.t, g.t + .45))) * -140;
+      let x = g.x, y = g.y + drop, s = p, o = clamp(prog(t, g.t, g.t + .12));
+      if (i > 0) { // outer grapes scatter outward
+        const e = E.inCubic(exit);
+        x += Math.cos(g.a) * 620 * e; y += Math.sin(g.a) * 620 * e; s *= 1 - .5 * e; o *= 1 - E.outCubic(exit);
+      } else { // centre grape becomes the lens
+        const e = E.inOutExpo(prog(t, 3.0, 3.62));
+        s *= 1 + e * 13.5; o *= 1 - prog(t, 3.18, 3.5);
+      }
+      g.el.style.transform = `translate(${x - 540 + 540}px, ${y}px) scale(${s})`;
+      g.el.style.left = '0px'; g.el.style.top = '0px';
+      g.el.style.opacity = o;
+    });
+    const rp = E.inOutCubic(prog(t, .4, 2.4));
+    const C = 2 * Math.PI * 420;
+    $('ringC').style.strokeDasharray = C;
+    $('ringC').style.strokeDashoffset = C * (1 - rp);
+    $('ring').style.transform = `rotate(${-90 + t * 8}deg)`; $('ring').style.transformOrigin = '540px 860px';
+    $('ring').style.opacity = 1 - exit;
+    drawLeaf(leaf1, t, 2.2, .8);
+    $('leaf1').style.opacity = 1 - prog(t, 2.95, 3.2);
+    $('leaf1').style.transform = `rotate(24deg) translateY(${-60 * E.inCubic(exit)}px)`;
+    reveal(logo1, t, 1.45, .045, .7, { dy: 46, blur: 12 });
+    reveal(sub1, t, 2.05, .025, .6, { dy: 20, blur: 6 });
+    $('logo1').style.opacity = $('sub1').style.opacity = 1 - E.inCubic(prog(t, 2.9, 3.2));
+    $('logo1').style.transform = $('sub1').style.transform = `translateY(${-40 * E.inCubic(exit)}px)`;
+    $('sub1').style.letterSpacing = lerp(.2, .34, E.outCubic(prog(t, 2.05, 3.2))) + 'em';
+    $('s1').style.background = t < 3.0 ? 'var(--paper)' : 'transparent';
+  }
+
+  /* ---- scene 2 : macro, 3.0 → 7.0 ---- */
+  const lensR = 95 * (1 + E.inOutExpo(prog(t, 3.0, 3.62)) * 13.5);
+  show($('s2'), t >= 3.0 && t < 7.1);
+  if (t >= 3.0 && t < 7.1) {
+    const k = prog(t, 3.0, 7.0);
+    $('s2img').style.transform = `scale(${1.28 - .16 * E.outCubic(k)}) rotate(${lerp(-2.5, 0, E.outCubic(k))}deg)`;
+    $('s2img').style.filter = `saturate(${lerp(1.25, 1.05, prog(t, 3.0, 3.8))})`;
+    const g = E.inOutSine(prog(t, 4.3, 5.5));
+    $('gloss').style.left = lerp(-600, 1300, g) + 'px';
+    $('gloss').style.opacity = g > 0 && g < 1 ? 1 : 0;
+    $('s2line').style.width = 110 * E.inOutCubic(prog(t, 4.0, 4.6)) + 'px';
+    reveal(s2cap, t, 4.25, .03, .6, { dy: 18, blur: 6 });
+  }
+
+  /* ---- chocolate curtain : 5.8 → 7.1 ---- */
+  const svg = $('choco');
+  let front = -1, tail = -1;
+  if (t >= 5.75 && t < 7.2) {
+    const p = E.inOutQuart(prog(t, 5.75, 7.1));
+    front = lerp(-500, 4400, p);
+    tail = front - 2250;
+    let h = `<rect x="0" y="${Math.max(-10, tail)}" width="1080" height="${Math.max(0, front - Math.max(-10, tail))}" fill="#4a2c24"/>`;
+    drips.forEach(d => {
+      const grow = clamp((p - d.lag * .4) * 1.6);
+      const L = d.len * E.outCubic(grow) + 30;
+      const y0 = front - 20;
+      h += `<rect x="${d.x}" y="${y0}" width="${d.w}" height="${L}" rx="${d.w / 2}" fill="#4a2c24"/>`;
+      h += `<rect x="${d.x + d.w * .22}" y="${y0 + 10}" width="${d.w * .14}" height="${Math.max(0, L - 40)}" rx="${d.w * .07}" fill="#7a4a3b" opacity=".45"/>`;
+    });
+    // glossy leading edge
+    h += `<rect x="0" y="${front - 34}" width="1080" height="10" fill="#6d4133" opacity=".5"/>`;
+    // soft wavy tail so the reveal feels poured, not wiped
+    let path = `M0 ${tail}`;
+    for (let x = 0; x <= 1080; x += 60) path += ` Q ${x + 30} ${tail - 40 - 30 * Math.sin(x * .02 + t * 4)} ${x + 60} ${tail}`;
+    path += ` L1080 ${tail + 2} L0 ${tail + 2} Z`;
+    h += `<path d="${path}" fill="#4a2c24"/>`;
+    svg.innerHTML = h;
+    svg.style.display = '';
+  } else { svg.style.display = 'none'; svg.innerHTML = ''; }
+
+  // s2 visible inside the growing grape, then only beneath the curtain's front edge
+  if (t < 3.62) $('s2').style.clipPath = `circle(${lensR}px at 540px 860px)`;
+  else if (front > -1) $('s2').style.clipPath = `inset(${Math.max(0, front - 10)}px 0 0 0)`;
+  else $('s2').style.clipPath = 'none';
+
+  /* ---- scene 3 : 6.3 → 10.3 ---- */
+  show($('s3'), t >= 6.2 && t < 10.4);
+  if (t >= 6.2 && t < 10.4) {
+    const k = prog(t, 6.2, 10.3);
+    $('panelImg').style.transform = `scale(${lerp(1.34, 1.14, E.outCubic(k))}) translateY(${lerp(50, -40, k)}px)`;
+    reveal(col1, t, 6.95, .16, .8, { dy: -30, blur: 14 });
+    reveal(col2, t, 7.6, .16, .8, { dy: -30, blur: 14 });
+    reveal(s3en, t, 8.5, .025, .6, { dy: 16, blur: 6 });
+    B.forEach(b => {
+      const y = b.y - (t - 6.2) * b.sp;
+      const x = b.x + Math.sin(t * .9 + b.ph) * 30;
+      b.el.style.transform = `translate(${x}px, ${y}px) scale(${b.z})`;
+      b.el.style.opacity = .55 * b.z * clamp(prog(t, 6.4, 7.2)) ;
+      b.el.style.filter = `blur(${(1 - b.z) * 6}px)`;
+    });
+    const out = E.inOutCubic(prog(t, 9.55, 10.25));
+    $('s3').style.transform = `scale(${1 - .06 * out})`;
+    $('s3').style.filter = `brightness(${1 - .25 * out})`;
+  }
+
+  /* ---- scene 4 : strips 9.55 → 10.35, hero until 13.1 ---- */
+  show($('s4'), t >= 9.5);
+  show($('s4over'), t >= 9.5 && t < 13.4);
+  if (t >= 9.5) {
+    const zoom = lerp(1.14, 1.0, E.outCubic(prog(t, 9.6, 13.2)));
+    strips.forEach((s, i) => {
+      const d = [2, 3, 1, 4, 0, 5][i] * .06; // centre-out stagger
+      const p = E.inOutQuart(prog(t, 9.55 + d, 9.55 + d + .7));
+      s.w.style.transform = `translateY(${(1 - p) * 1980}px)`;
+      s.im.style.transform = `scale(${zoom * lerp(1, .6, E.inOutCubic(prog(t, 13.05, 14.0)))}) translateY(${(1 - p) * -300}px)`;
+    });
+    const gl = E.inOutSine(prog(t, 11.4, 12.8));
+    $('glow').style.opacity = gl * .85 * (1 - prog(t, 13.0, 13.8));
+
+    // morph into a polaroid
+    const m = E.inOutCubic(prog(t, 13.05, 14.0));
+    const T = 470 * m, Lx = 150 * m, Bt = 440 * m + 0;
+    $('photos').style.clipPath = m > 0 ? `inset(${T}px ${Lx}px ${Bt + 20 * m}px ${Lx}px round ${4 * m}px)` : 'none';
+    $('s4').style.transform = `translateY(${-170 * m}px) rotate(${-3 * m}deg) scale(${1 - .04 * m})`;
+    $('frame').style.opacity = m > .02 ? 1 : 0;
+    $('tape').style.opacity = E.outCubic(prog(t, 13.9, 14.15));
+    $('tape').style.transform = `rotate(4deg) scale(${lerp(1.35, 1, E.outCubic(prog(t, 13.9, 14.15)))})`;
+    drawLeaf(leaf2, t, 14.0, .8);
+    $('leaf2').style.transform = `rotate(18deg)`;
+    reveal(cardTxt, t, 14.1, .07, .6, { dy: 14, blur: 6 });
+    reveal(logo5, t, 14.25, .035, .6, { dy: 24, blur: 8 });
+
+    // warm type over the hero
+    $('fadeB').style.opacity = E.outCubic(prog(t, 10.2, 10.9)) * (1 - prog(t, 12.9, 13.25));
+    reveal(s4txt, t, 10.5, .2, .9, { dy: 26, blur: 12 });
+    $('s4txt').style.opacity = 1 - prog(t, 12.9, 13.2);
+  }
+  show($('logo5'), t >= 14.2);
+
+  /* ---- film grain + breathing vignette ---- */
+  const f = Math.floor(t * 30), r = rand(f * 7919 + 13);
+  $('grain').style.transform = `translate(${Math.floor(r() * 60 - 30)}px, ${Math.floor(r() * 60 - 30)}px)`;
+  $('vignette').style.opacity = .8 + .2 * Math.sin(t * 1.3);
+};
+
+render(0);
+</script>
+</body>
+</html>

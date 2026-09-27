@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Noto Serif TC';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/NotoSerifTC-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+2c, U+41, U+46, U+61-69, U+6b-70, U+72-75, U+77, U+79, U+3002, U+4eca, U+4f60, U+4f86, U+5929, U+5b50, U+5c31, U+5f88, U+5f97, U+5feb, U+6162, U+65e5, U+662f, U+6a02, U+751c, U+751f, U+7684, U+88ab, U+8a18, U+ff0c;
+}
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  src: url(fonts/CormorantGaramond-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+2c, U+41, U+46, U+61-69, U+6b-70, U+72-75, U+77, U+79, U+3002, U+4eca, U+4f60, U+4f86, U+5929, U+5b50, U+5c31, U+5f88, U+5f97, U+5feb, U+6162, U+65e5, U+662f, U+6a02, U+751c, U+751f, U+7684, U+88ab, U+8a18, U+ff0c;
+}
+@font-face {
+  font-family: 'LXGW WenKai TC';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/LXGWWenKaiTC-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+2c, U+41, U+46, U+61-69, U+6b-70, U+72-75, U+77, U+79, U+3002, U+4eca, U+4f60, U+4f86, U+5929, U+5b50, U+5c31, U+5f88, U+5f97, U+5feb, U+6162, U+65e5, U+662f, U+6a02, U+751c, U+751f, U+7684, U+88ab, U+8a18, U+ff0c;
+}
