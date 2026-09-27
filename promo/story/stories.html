@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<link href="../video/fonts.css" rel="stylesheet">
+<style>
+  :root { --paper: #f4f1ec; --ink: #3f3a35; --soft: #9a9288; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ccc; font-family: "Noto Serif TC", serif; color: var(--ink); }
+  /* IG story: 1080×1920; keep text out of the top ~250px and bottom ~340px */
+  .story { width: 1080px; height: 1920px; position: relative; overflow: hidden; background: var(--paper); margin-bottom: 40px; }
+  .story::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .3;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.28 0 0 0 0 0.25 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .abs { position: absolute; }
+  .photo { position: absolute; background-size: cover; background-position: center; }
+  .en { font-family: "Cormorant Garamond", serif; font-style: italic; }
+  .hand { font-family: "LXGW WenKai TC", serif; }
+
+  /* 1 — edge-to-edge photo on paper */
+  #s1 .brand { left: 0; right: 0; top: 330px; text-align: center; font-size: 44px; color: var(--soft); }
+  #s1 .photo { left: 0; top: 440px; width: 1080px; height: 1072px; background-image: url(../src/story-1.jpg); }
+  #s1 .line { left: 0; right: 0; top: 1570px; text-align: center; font-size: 48px; letter-spacing: .32em; }
+
+  /* 2 — blurred fill + framed close-up */
+  #s2 .blur { position: absolute; inset: -80px; background: url(../src/story-2.jpg) center/cover;
+    filter: blur(46px) saturate(1.1) brightness(1.02); transform: scale(1.1); }
+  #s2 .veil { position: absolute; inset: 0; background: rgba(244,241,236,.55); }
+  #s2 .photo { left: 110px; top: 400px; width: 860px; height: 1075px; border-radius: 22px;
+    background-image: url(../src/story-2.jpg); background-position: 62% 50%;
+    box-shadow: 0 30px 70px rgba(60,50,30,.18); }
+  #s2 .line { left: 0; right: 0; top: 1540px; text-align: center; font-size: 50px; letter-spacing: .2em; color: var(--ink);
+  }
+
+  /* 3 — polaroid */
+  #s3 .card { left: 150px; top: 380px; width: 780px; height: 1000px; background: #fdfcf9; border-radius: 6px;
+    transform: rotate(-3deg); box-shadow: 0 34px 70px rgba(80,60,40,.14), 0 3px 10px rgba(80,60,40,.07); }
+  #s3 .card .photo { left: 36px; top: 36px; width: 708px; height: 780px; border-radius: 2px;
+    background-image: url(../src/story-3.jpg); background-position: 42% 50%; }
+  #s3 .card .hand { position: absolute; left: 0; right: 0; bottom: 64px; text-align: center; font-size: 50px; letter-spacing: .06em; }
+  #s3 .tape { left: 450px; top: 342px; width: 190px; height: 60px; background: rgba(205,219,178,.8); transform: rotate(4deg); }
+  #s3 .brand { left: 0; right: 0; top: 1500px; text-align: center; font-size: 44px; color: var(--soft); }
+</style>
+</head>
+<body>
+
+<section class="story" id="s1">
+  <div class="brand abs en">Ameow's Food</div>
+  <div class="photo"></div>
+  <div class="line abs">今天是你的日子</div>
+</section>
+
+<section class="story" id="s2">
+  <div class="blur"></div><div class="veil"></div>
+  <div class="photo"></div>
+  <div class="line abs">慢慢來，生日快樂。</div>
+</section>
+
+<section class="story" id="s3">
+  <div class="card abs">
+    <div class="photo"></div>
+    <div class="hand">被記得，就很甜。</div>
+  </div>
+  <div class="tape abs"></div>
+  <div class="brand abs en">Ameow's Food</div>
+</section>
+
+</body>
+</html>
