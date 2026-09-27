@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 300;
+  src: url(fonts/kr-NotoSansTC-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+61-7a, U+1109, U+110b, U+110e, U+1112, U+1161-1162, U+116e, U+1175, U+11a8, U+11af, U+11bc, U+2661, U+3002, U+4eca, U+4f60, U+4f86, U+5929, U+5b50, U+5c31, U+5f88, U+5f97, U+5feb, U+6162, U+65e5, U+662f, U+6a02, U+751c, U+751f, U+7684, U+88ab, U+8a18, U+c0ac-c0ad, U+c0b4, U+c0c1, U+c0c8-c0c9, U+c0d0, U+c0dd, U+c218-c219, U+c220, U+c22d, U+c2dc-c2dd, U+c2e4, U+c2f1, U+c544-c545, U+c54c, U+c559, U+c560-c561, U+c568, U+c575, U+c6b0-c6b1, U+c6b8, U+c6c5, U+c774-c775, U+c77c, U+c789, U+cc28-cc29, U+cc30, U+cc3d, U+cc44-cc45, U+cc4c, U+cc59, U+cd94-cd95, U+cd9c, U+cda9, U+ce58-ce59, U+ce60, U+ce6d, U+d558-d559, U+d560, U+d56d, U+d574-d575, U+d57c, U+d589, U+d6c4-d6c5, U+d6cc, U+d6d9, U+d788-d789, U+d790, U+d79d, U+ff0c;
+}
+@font-face {
+  font-family: 'Noto Sans TC';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/kr-NotoSansTC-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+61-7a, U+1109, U+110b, U+110e, U+1112, U+1161-1162, U+116e, U+1175, U+11a8, U+11af, U+11bc, U+2661, U+3002, U+4eca, U+4f60, U+4f86, U+5929, U+5b50, U+5c31, U+5f88, U+5f97, U+5feb, U+6162, U+65e5, U+662f, U+6a02, U+751c, U+751f, U+7684, U+88ab, U+8a18, U+c0ac-c0ad, U+c0b4, U+c0c1, U+c0c8-c0c9, U+c0d0, U+c0dd, U+c218-c219, U+c220, U+c22d, U+c2dc-c2dd, U+c2e4, U+c2f1, U+c544-c545, U+c54c, U+c559, U+c560-c561, U+c568, U+c575, U+c6b0-c6b1, U+c6b8, U+c6c5, U+c774-c775, U+c77c, U+c789, U+cc28-cc29, U+cc30, U+cc3d, U+cc44-cc45, U+cc4c, U+cc59, U+cd94-cd95, U+cd9c, U+cda9, U+ce58-ce59, U+ce60, U+ce6d, U+d558-d559, U+d560, U+d56d, U+d574-d575, U+d57c, U+d589, U+d6c4-d6c5, U+d6cc, U+d6d9, U+d788-d789, U+d790, U+d79d, U+ff0c;
+}
+@font-face {
+  font-family: 'Gowun Dodum';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/kr-GowunDodum-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+61-7a, U+1109, U+110b, U+110e, U+1112, U+1161-1162, U+116e, U+1175, U+11a8, U+11af, U+11bc, U+2661, U+3002, U+4eca, U+4f60, U+4f86, U+5929, U+5b50, U+5c31, U+5f88, U+5f97, U+5feb, U+6162, U+65e5, U+662f, U+6a02, U+751c, U+751f, U+7684, U+88ab, U+8a18, U+c0ac-c0ad, U+c0b4, U+c0c1, U+c0c8-c0c9, U+c0d0, U+c0dd, U+c218-c219, U+c220, U+c22d, U+c2dc-c2dd, U+c2e4, U+c2f1, U+c544-c545, U+c54c, U+c559, U+c560-c561, U+c568, U+c575, U+c6b0-c6b1, U+c6b8, U+c6c5, U+c774-c775, U+c77c, U+c789, U+cc28-cc29, U+cc30, U+cc3d, U+cc44-cc45, U+cc4c, U+cc59, U+cd94-cd95, U+cd9c, U+cda9, U+ce58-ce59, U+ce60, U+ce6d, U+d558-d559, U+d560, U+d56d, U+d574-d575, U+d57c, U+d589, U+d6c4-d6c5, U+d6cc, U+d6d9, U+d788-d789, U+d790, U+d79d, U+ff0c;
+}
+@font-face {
+  font-family: 'LXGW WenKai TC';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/kr-LXGWWenKaiTC-0.woff2) format('woff2');
+  unicode-range: U+20, U+27, U+61-7a, U+1109, U+110b, U+110e, U+1112, U+1161-1162, U+116e, U+1175, U+11a8, U+11af, U+11bc, U+2661, U+3002, U+4eca, U+4f60, U+4f86, U+5929, U+5b50, U+5c31, U+5f88, U+5f97, U+5feb, U+6162, U+65e5, U+662f, U+6a02, U+751c, U+751f, U+7684, U+88ab, U+8a18, U+c0ac-c0ad, U+c0b4, U+c0c1, U+c0c8-c0c9, U+c0d0, U+c0dd, U+c218-c219, U+c220, U+c22d, U+c2dc-c2dd, U+c2e4, U+c2f1, U+c544-c545, U+c54c, U+c559, U+c560-c561, U+c568, U+c575, U+c6b0-c6b1, U+c6b8, U+c6c5, U+c774-c775, U+c77c, U+c789, U+cc28-cc29, U+cc30, U+cc3d, U+cc44-cc45, U+cc4c, U+cc59, U+cd94-cd95, U+cd9c, U+cda9, U+ce58-ce59, U+ce60, U+ce6d, U+d558-d559, U+d560, U+d56d, U+d574-d575, U+d57c, U+d589, U+d6c4-d6c5, U+d6cc, U+d6d9, U+d788-d789, U+d790, U+d79d, U+ff0c;
+}
