@@ -1,0 +1,28 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #ccc; }
+  .story { width: 1080px; height: 1920px; position: relative; overflow: hidden; background: #f4f1ec; margin-bottom: 40px; }
+  .story::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .3;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.3 0 0 0 0 0.28 0 0 0 0 0.25 0 0 0 .18 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  .p { position: absolute; background-size: cover; background-position: center; }
+  .one { background-image: url(../src/story-1.jpg); }
+  .two { background-image: url(../src/story-2.jpg); }
+  .three { background-image: url(../src/story-3.jpg); }
+
+  /* A — stepped grid */
+  #a .p { border-radius: 10px; }
+  #a .one   { left: 70px;  top: 170px;  width: 940px; height: 820px; background-position: 50% 58%; }
+  #a .two   { left: 70px;  top: 1020px; width: 455px; height: 660px; background-position: 58% 50%; }
+  #a .three { left: 555px; top: 1090px; width: 455px; height: 660px; background-position: 40% 50%; }
+
+  /* B — overlapping prints */
+  #b .p { border: 20px solid #fdfcf9; box-shadow: 0 26px 60px rgba(80,60,40,.14), 0 3px 10px rgba(80,60,40,.07); }
+  #b .one   { left: 80px;  top: 170px;  width: 720px; height: 760px; transform: rotate(-2.5deg); background-position: 50% 60%; }
+  #b .two   { left: 330px; top: 760px;  width: 670px; height: 640px; transform: rotate(2.5deg); background-position: 60% 45%; }
+  #b .three { left: 100px; top: 1250px; width: 600px; height: 540px; transform: rotate(-1.5deg); background-position: 40% 40%; }
+</style></head><body>
+<section class="story" id="a"><div class="p one"></div><div class="p two"></div><div class="p three"></div></section>
+<section class="story" id="b"><div class="p one"></div><div class="p two"></div><div class="p three"></div></section>
+</body></html>
